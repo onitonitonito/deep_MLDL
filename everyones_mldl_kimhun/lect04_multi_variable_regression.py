@@ -8,11 +8,23 @@
 # [케글:Kaggle] = https://www.kaggle.com --> 데이터과학 예제 무료로 연습하는 법.
 """
 import os
+import sys
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-CSV_DIR = os.path.join(os.path.dirname(__file__), "_csv_hunkim/")
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+CSV_DIR = os.path.join(ROOT, "_static", "_csv_hunkim", "")
+FNAME = "data01_test_score.csv"
+with open(CSV_DIR+FNAME) as f:
+    # string = f.readline()
+    string = f.read()
+    print(string)
+
+print(CSV_DIR + FNAME )
+quit()
 
 def single_linear_regression(learnig_rate=1e-5, repeatation=2001):
     """ 전통적인 방법의 선형회귀(Linear Regression)
@@ -156,8 +168,9 @@ def matrics_file_import_linear(learnig_rate=1e-5, repeatation=2001):
     # CSV에 저장된 값은 [n,3]x[3,1] = [n,1] 의 매트릭스 배열
     """
     tf.set_random_seed(777)         # for reproducibility
+
     xy = np.loadtxt(
-        CSV_DIR+ "data01_test_score.csv",
+        CSV_DIR + FNAME,
         delimiter=',',
         dtype=tf.float32)
 
@@ -387,10 +400,11 @@ def draw_lists_pyplot(y_array, line_weight=3, learnig_rate=1):
     plt.grid(b=None, which='major', axis='both')
     plt.show()
 
+
 if __name__ == '__main__':
     # single_linear_regression(4.5e-5, 2001)         # cost=0.36
     # matrics_linear_regression(1e-5, 2001)          # cost=0.43
-    # matrics_file_import_linear(1e-5, 2001)         # cost=0.87
-    thread_queues_runner_linear(1e-5, 10001)        # cost = 4.55 -> 4.42 min.
+    matrics_file_import_linear(1e-5, 2001)         # cost=0.87
+    # thread_queues_runner_linear(1e-5, 10001)        # cost = 4.55 -> 4.42 min.
     # softMax_func_to_probablity(0.75, 2001)          # cost=0.0012
     # softMax_func_to_probablity(0.11, 1301)          # cost=0.0012

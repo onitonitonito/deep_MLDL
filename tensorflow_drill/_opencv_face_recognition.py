@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 
-# File "D:\My Documents\GitHub\k_mooc_reboot\_1.py", line 11, in <module>
+# File "D:\My Documents\GitHub\deep_MLDL\_1.py", line 11, in <module>
 # f.write(xmldata) - TypeError: write() argument must be str, not bytes
 
-DIRS = os.path.dirname(__file__).partition('k_mooc_reboot\\')
+DIRS = os.path.dirname(__file__).partition('deep_MLDL\\')
 ROOT = DIRS[0] + DIRS[1]
 
 filename = 'haarcascade_frontalface.xml'

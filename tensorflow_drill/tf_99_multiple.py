@@ -6,7 +6,7 @@
 import os
 import sys
 
-ROOT_DIR = "k_mooc_reboot"
+ROOT_DIR = "deep_MLDL"
 CURRENT_DIR = os.path.dirname(__file__)
 
 """ 공통 스크립트를 패치하기 위한 사전작업 """

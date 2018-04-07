@@ -9,9 +9,9 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 tf.set_random_seed(777)     # reproducibility
 
-DIRS = os.path.dirname(__file__).partition("k_mooc_reboot\\")
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-filename_with_dir = ROOT + '_static\\MNIST_data\\'
+filename_with_dir = os.path.join(ROOT, "_static", "MNIST_data", "")
 
 mnist = input_data.read_data_sets(filename_with_dir, one_hot=True)
 

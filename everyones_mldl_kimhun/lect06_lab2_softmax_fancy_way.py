@@ -6,12 +6,16 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-CSV_DIR = os.path.join(os.path.dirname(__file__), "_csv_hunkim/")
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+CSV_DIR = os.path.join(ROOT, "_static", "_csv_hunkim", "")
+
 tf.set_random_seed(777)     # for reproducibility (재현성)
 
 # Lab - code / X:[n x 16] * W:[16 x 7] = Y:[n x 7] , nb_classes = 7 = [1,0,0,0,0,0,0]
 # Prediction animal type based on various features
-xy = np.loadtxt(CSV_DIR+'data04_zoo_classify.csv', delimiter=',', dtype=np.float32)
+xy = np.loadtxt(CSV_DIR + 'data04_zoo_classify.csv', delimiter=',', dtype=np.float32)
 x_data = xy[ :, 0:-1]
 y_data = xy[ :, [-1] ]
 
