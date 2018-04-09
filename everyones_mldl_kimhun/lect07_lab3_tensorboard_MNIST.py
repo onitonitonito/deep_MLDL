@@ -6,9 +6,18 @@ Author: Aymeric Damien
 Project: https://github.com/aymericdamien/TensorFlow-Examples/
 """
 # from __future__ import print_function
+import os
+import sys
+
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+WORK_DIR = os.path.join(ROOT, "_static", "")
+
+mnist = input_data.read_data_sets(WORK_DIR + "MNIST_data/", one_hot=True)
 
 # Parameters
 learning_rate = 1e-1
@@ -16,7 +25,7 @@ nb_classes = 10
 training_epochs = 15
 batch_size = 100
 display_epoch = 1
-logdir = './_logdir/'
+logdir = WORK_DIR + '_logdir/'
 
 """ MNIST image of shape = 28 * 28 = 784 pixel
 # X:[n, 784] * W:[784, 10] + b[10] = Y:[n, 10]
@@ -91,6 +100,7 @@ with tf.Session() as sess:
         session=sess,
         feed_dict={x: mnist.test.images, y: mnist.test.labels}))
 
-    print("Run the command line:\n" +\
-          "--> tensorboard --logdir=./book_udacity_lecture_ML/_logdir/\n" +\
+    print("Run the command line:\n"
+          " : Starting form the ROOT dir. Run tensorboard @ ROOT\n"
+          "--> tensorboard --logdir='./_static/_logdir/'\n"
           "Then open http://your-site:6006/ into your web browser")

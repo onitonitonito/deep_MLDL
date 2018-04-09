@@ -1,6 +1,7 @@
 """ DEEP Convolution Neural Network - Practice for MNIST
 """
 import os
+import sys
 import random
 import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -9,11 +10,12 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 tf.set_random_seed(777)     # reproducibility
 
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
 DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-filename_with_dir = os.path.join(ROOT, "_static", "MNIST_data", "")
+WORK_DIR = os.path.join(ROOT, "_static", "")
 
-mnist = input_data.read_data_sets(filename_with_dir, one_hot=True)
+mnist = input_data.read_data_sets(WORK_DIR + "MNIST_data/", one_hot=True)
 
 """ HYPER PARAMETER """
 learning_rate = 1e-3

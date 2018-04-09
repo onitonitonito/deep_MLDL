@@ -5,13 +5,21 @@
 # Training = 15-Epoches
 # 1 batch = 100 px. / 1-Epoch = 78.4 batches / 15-Epoch = 1,176 batches
 """
+import os
+import sys
 import random
 import numpy as np
 import matplotlib.pyplot as plt
 
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+WORK_DIR = os.path.join(ROOT, "_static", "")
+
+mnist = input_data.read_data_sets(WORK_DIR + "MNIST_data/", one_hot=True)
 
 """ Set parameter : """
 learning_rate = 1e-1
@@ -19,7 +27,7 @@ nb_classes = 10
 training_epoches = 15
 batch_size = 100
 display_epoch = 1
-logdir = './_logdir/'
+logdir = WORK_DIR + '_logdir/'
 
 """ MNIST image of shape = 28 * 28 = 784 pixel
 # X:[n, 784] * W:[784, 10] + b[10] = Y:[n, 10]
@@ -43,11 +51,11 @@ train =  optimizer.minimize(cost)
 
 is_correct = tf.equal(tf.argmax(hypothesis, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    writer = tf.summary.FileWriter('./_logdir', sess.graph)
-
+    sess.run(init)
+    writer = tf.summary.FileWriter(WORK_DIR + '_logdir', sess.graph)
 
     for epoch in range(training_epoches):
         average_cost = 0.
@@ -66,6 +74,7 @@ with tf.Session() as sess:
             print("Epoch:{:3d} ___ Cost:{:.9f}".format(
                 epoch + 1,
                 average_cost))
+                
     print("Learning finished")          # whole 데이터 셋을  15번 반복학습
 
     # Test the model using test sets

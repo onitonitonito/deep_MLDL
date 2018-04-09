@@ -102,7 +102,7 @@ A가 Y에 미치는 영향이라고 해석하기 어렵습니다.
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-f, ax = plt.subplots(1,2, figsize=(15,5))
+f, ax = plt.subplots(1,1, figsize=(7, 7))
 sns.heatmap(train.corr(), vmax=.8, square=True)
 plt.show()
 
@@ -125,71 +125,65 @@ plt.show()
 하지만 단지 Y를 잘 예측하는 것이 모델의 목적이라면 굳이 이 단계에서 변수를 제거 할
 필요는 없습니다.
 """
-def print_stronger(f1, f2):
-    print('{} > {}'.format(stronger_relation_sale_price(f1, f2)[0], stronger_relation_sale_price(f1, f2)[1]))
+def show_bigger(f1, f2):
+    print('{} > {}'.format(stronger_relation(f1, f2)[0], stronger_relation(f1, f2)[1]))
 
-def stronger_relation_sale_price(f1, f2):       # 헬퍼()
+def stronger_relation(f1, f2):       # 헬퍼()
     f1_corr = train.corr().loc[f1,'gender']
     f2_corr = train.corr().loc[f2,'gender']
     # print(f1_corr, f2_corr)
     return (f1, f2) if (f1_corr >= f2_corr) else (f2, f1)
 
-print_stronger('meanfreq', 'median')    # median > meanfreq
-print_stronger('meanfreq', 'Q25')       # meanfreq > Q25
-print_stronger('meanfreq', 'Q75')       # Q75 > meanfreq
-print_stronger('meanfreq', 'mode')      # mode > meanfreq
-print_stronger('meanfreq', 'centroid')  # meanfreq > centroid
+show_bigger('meanfreq', 'median')    # median > meanfreq
+show_bigger('meanfreq', 'Q25')       # meanfreq > Q25
+show_bigger('meanfreq', 'Q75')       # Q75 > meanfreq
+show_bigger('meanfreq', 'mode')      # mode > meanfreq
+show_bigger('meanfreq', 'centroid')  # meanfreq > centroid
+
 # Q75 > mode > median > meanfreq > centroid > Q25
 #   ... 이 계열에선, Q75만 포함시키고 나머지는 드롭(Drop:제거) 한다
 #   ... 유사한 영향력을 발휘하는 인자 들, 중에, Q75의 영향력이 가장 크기 때문이다
 
-print_stronger('sd', 'IQR')
-print_stronger('sd', 'sfm')
+show_bigger('sd', 'IQR')
+show_bigger('sd', 'sfm')
 
-print_stronger('median', 'Q25')
-print_stronger('median', 'Q75')
-print_stronger('median', 'mode')
-print_stronger('median', 'centroid')
+show_bigger('median', 'Q25')
+show_bigger('median', 'Q75')
+show_bigger('median', 'mode')
+show_bigger('median', 'centroid')
 
-print_stronger('Q25', 'centroid')
-print_stronger('Q75', 'centroid')
-print_stronger('mode', 'centroid')
+show_bigger('Q25', 'centroid')
+show_bigger('Q75', 'centroid')
+show_bigger('mode', 'centroid')
 
-print_stronger('skew', 'kurt')
-print_stronger('sp.ent', 'sfm')
+show_bigger('skew', 'kurt')
+show_bigger('sp.ent', 'sfm')
 
-print_stronger('meandom', 'maxdom')
-print_stronger('meandom', 'dfrange')
+show_bigger('meandom', 'maxdom')
+show_bigger('meandom', 'dfrange')
 
-print_stronger('maxdom', 'dfrange')
+show_bigger('maxdom', 'dfrange')
 
-print_stronger('mode', 'Q75')
+show_bigger('mode', 'Q75')
 
 """ 영향력 상위 지표 5개(Q75, IQR, kurt, sp.ent, dfrange)만 남기고
 나머지 비슷한 영향력을 발휘하는 인자들은 대부분 'Drop'(제거)한다.
-
+----------
 Q75 > mode > median > meanfreq > centroid > Q25
 IQR > sd > sfm
 kurt > skew
 sp.ent > sfm
 dfrange > maxdom > meandom
+"""
 
-제거 리스트 (10개) :
+""" 제거 리스트 (10개) :
 [mode, median, meanfreq, centroid, Q25, sd, skew, sfm, maxdom, meandom]
 """
-
-"""* tolkien= Q75 > mode > meanfreq > centroid > median > Q25
-* IQR > sd > sfm
-* kurt > skew
-* sp.ent > sfm
-* meandom > dfrange > maxdom
-"""
-
-train = train.drop(['mode', 'median', 'meanfreq', 'centroid', 'Q25',
-                    'sd', 'skew', 'sfm', 'maxdom', 'meandom'], axis=1)
-
-test = test.drop(['mode', 'median', 'meanfreq', 'centroid', 'Q25',
-                    'sd', 'skew', 'sfm', 'maxdom', 'meandom'], axis=1)
+# train = train.drop(['mode', 'median', 'meanfreq', 'centroid', 'Q25',
+#                     'sd', 'skew', 'sfm', 'maxdom', 'meandom'], axis=1)
+#
+# test = test.drop(['mode', 'median', 'meanfreq', 'centroid', 'Q25',
+#                     'sd', 'skew', 'sfm', 'maxdom', 'meandom'], axis=1)
 
 print(len(train.columns), train.columns)
 sns.heatmap(train.corr(), vmax=.8, square=True)
@@ -206,7 +200,20 @@ plt.show()
 
 # I think this graph is more elegant than pandas.hist()
 # train['SalePrice'].hist(bins=100)
-sns.distplot(train['gender'])
+sns.distplot(train['Q75'])
+plt.show()
+
+sns.distplot(train['IQR'])
+plt.show()
+
+sns.distplot(train['kurt'])
+plt.show()
+
+sns.distplot(train['sp.ent'])
+plt.show()
+
+sns.distplot(train['dfrange'])
+plt.show()
 
 """## Scatter chart / 산점도, 스캐터 차트
 * Y축은 모두 gender이고, 독립변수를 X축에 맞춰 모든 변수에 대해 산점도를 그렸습니다.
@@ -221,15 +228,17 @@ gender 와 낮은 관계를 가진다고 해석할 수도 있습니다. 하지�
 결론을 내려서는 안 됩니다.
 """
 
-fig, axes = plt.subplots(2, 6, figsize=(15, 7), sharey=True)
+fig, axes = plt.subplots(3, 7, figsize=(15, 7), sharey=True)
 for col, a in zip(train.columns, axes.flatten()):
     if col == 'gender':
         a.set_title(col)
         a.scatter(df['gender'], df['gender'])
+
     else:
         df = train[['gender', col]].dropna()
         a.set_title(col)
         a.scatter(df[col], df['gender'])
+plt.show()
 
 """* 이 data를 lab5-ex.ipynb에 적용해보자."""
 
@@ -270,17 +279,22 @@ predicted = tf.cast(hypothesis > 0.5, dtype=tf.float32)
 accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
 
 """# 6.Train a model"""
+train_epoch = 20
+batch_size = 100
 
 init = tf.global_variables_initializer()
-
 sess = tf.Session()
 sess.run(init)
 
-for step in range(2_000):
-    cost_val, _ = sess.run([cost, train], feed_dict={X: x_data, Y: y_data})
-    step % 100 == 0:
-        print("%4s __ %s" % (step, cost_val))
+for epoch in range(train_epoch):
+    total_cost = 0
 
+    for batch in range(batch_size):
+        cost_val, _ = sess.run([cost, train], feed_dict={X: x_data, Y: y_data})
+        total_cost += cost_val
+
+        if step % 100 == 0:
+            print("%4s __ %s" % (step, cost_val))
 
 """ # 6. Test a model """
 x_test = test.loc[:,['Q75','IQR','kurt','sp.ent']].values

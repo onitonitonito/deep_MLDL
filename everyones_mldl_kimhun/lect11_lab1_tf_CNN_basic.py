@@ -1,11 +1,19 @@
-""" ERROR
+""" ERROR : IDK why? - MNIST CNN Solving.
 
 """
+import os
+import sys
 import tensorflow as tf
 import matplotlib.pyplot as plt
-
 from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+
+
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+WORK_DIR = os.path.join(ROOT, "_static", "")
+
+mnist = input_data.read_data_sets(WORK_DIR + "MNIST_data/", one_hot=True)
 
 X = tf.placeholder(dtype=tf.float32, shape=[None, 784], name='mnist_img')
 X_img = tf.reshape(tensor=X, shape=[-1,28,28,1])        # image reshape
@@ -124,11 +132,9 @@ correct_prediction = tf.equal(tf.argmax(hypothesis, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(
     x=correct_prediction, DstT=tf.float32, name='accuracy'))
 
-
-
-
 accu_val = se
 print("".format())
+
 
 
 """
