@@ -37,3 +37,8 @@ image_006*
 image_007*
 image_008*
 image_009*
+
+#_____________________________________________________
+#  6. ipython notebook temporary check point
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.ipynb_checkpoints/
