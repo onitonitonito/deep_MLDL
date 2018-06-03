@@ -2,43 +2,29 @@
 #  1. cache, build, db sqlite3 files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 __pycache__/
+MNIST_data/
+_logdir/
 *.pyc
 *.txt
 *.sqlite3
+*.npy
+
 
 #_____________________________________________________
-#  2. TensorBoard log data = _logdir/*.YOGA-0KPGT19P_
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-# *.YOGA-0KPGT19P
-
-#_____________________________________________________
-#  3. PyInstaller Distribution
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-dist/
-
-#_____________________________________________________
-#  4. Temporary exec files for TEST
+#  2. Temporary files for TEST
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _.html
 _.pdb
 *.xlsb
+*.xml
+
+# -- classified images for test ---
+cache_avhash/
+category_101objects/
+gyudon/
+
 
 #_____________________________________________________
-#  5. ignore web scrapping images for ML, CNN, gyudons
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-_static/image/flower/*.jpg
-_static/image/gyudon/*.jpg
-image_000*
-image_002*
-image_003*
-image_004*
-image_005*
-image_006*
-image_007*
-image_008*
-image_009*
-
-#_____________________________________________________
-#  6. ipython notebook temporary check point
+#  3. ipython notebook temporary check point
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .ipynb_checkpoints/
