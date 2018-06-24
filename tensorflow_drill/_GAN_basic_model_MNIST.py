@@ -1,20 +1,20 @@
+import os
+import sys
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 
+# '루트'와 '작업'디렉토리 설정 - for 스크립트런
+DIRS = os.path.dirname(__file__).partition("deep_MLDL")
+ROOT = DIRS[0] + DIRS[1]
+sys.path.append(ROOT)
+
 from os.path import dirname, join
-WORK_DIR = join(dirname(__file__),'MNIST_data','')
-
-
-print(WORK_DIR)
-break         # 여기서 잠시 멈추기
-# \Github\deep_MLDL\tensorflow_drill\MNIST_data\
-
+WORK_DIR = join(ROOT,'_static','MNIST_data','')
 
 
 from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets(WORK_DIR, one_hot=True)
-
 
 # Hyper- Parameter
 learning_rate = 2e-4
@@ -104,6 +104,5 @@ for epoch in range(training_epoches):
             str(epoch+1).zfill(3)),
             bbox_inches = 'tight')
         plt.close(fig)
-print('...optimizing finished ...')
 
-# distributed 1.21.8 requires msgpack, which is not installed.
+print('...optimizing finished ...')
