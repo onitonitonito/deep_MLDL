@@ -2,7 +2,7 @@
 #  1. cache, build, db sqlite3 files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 __pycache__/
-MNIST_data/
+mnist_data/
 _logdir/
 *.pyc
 *.txt
