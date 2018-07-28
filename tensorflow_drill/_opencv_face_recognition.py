@@ -1,4 +1,11 @@
-""" Face Recognition by OpenCV-Python """
+"""
+# Face Recognition by OpenCV-Python (py-2.7)
+#
+#
+#
+#"""
+print(__doc__)
+
 import os
 import urllib
 import matplotlib.pyplot as plt

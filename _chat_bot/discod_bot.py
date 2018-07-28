@@ -30,3 +30,11 @@ if __name__ == '__main__':
 
 bot.run("{TOKEN_HASH_PRINT_UNKNOWN_HERE}")
 a = input()
+
+
+
+""" pip install discord
+Successfully built discord discord.py aiohttp
+web3 4.7.2 has requirement websockets<7.0.0,>=6.0.0,
+but you'll have websockets 3.4 which is incompatible.
+"""
