@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # 디렉토리 설정 (ROOT, CSV_DIR, FNAME)
 DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-CSV_DIR = os.path.join(ROOT, "_static", "_csv_hunkim", "")
+CSV_DIR = os.path.join(ROOT, "_statics", "_csv_hunkim", "")
 FNAME = "data01_test_score.csv"
 
 """ Hyper Parameters """

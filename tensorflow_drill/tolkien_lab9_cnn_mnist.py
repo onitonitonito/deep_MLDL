@@ -32,7 +32,7 @@ def set_API_file(filename):
             _d1 = drive.ListFile({'q': "'{}' in parents".format(_f1['id'])})
 
         for _f2 in _d1.GetList():
-            if _f2['title'] == "_static":
+            if _f2['title'] == "_statics":
                 print('title: {:11} - id: {}'.format(
                     _f2['title'],
                     _f2['id']))

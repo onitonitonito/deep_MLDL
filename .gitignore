@@ -4,10 +4,10 @@
 __pycache__/
 mnist_data/
 _logdir/
+food/*.*
 *.pyc
-*.txt
-*.sqlite3
 *.npy
+*.bak
 
 
 #_____________________________________________________
@@ -16,7 +16,6 @@ _logdir/
 _.html
 _.pdb
 *.xlsb
-*.xml
 
 # -- classified images for test ---
 cache_avhash/
@@ -28,3 +27,4 @@ gyudon/
 #  3. ipython notebook temporary check point
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .ipynb_checkpoints/
+*.jpg

@@ -34,11 +34,11 @@ ROOT = DIRS[0] + DIRS[1]
 sys.path.append(ROOT)
 
 # 스크립트런 '한글' 표시를 위한 커스텀 모듈 실행
-import _script_run_utf8
-_script_run_utf8.main()
+import script_run
+
 
 # -------------------------------------------------------------
-WORK_DIR = os.path.join(ROOT, "_static", "_made_static", "")
+WORK_DIR = os.path.join(ROOT, "_statics", "_made_statics", "")
 
 # boston.csv 화일에서 읽어서 data 리스트 화일에 담는다.
 with open(WORK_DIR + "bostonc_wrong.csv", mode='r') as f:

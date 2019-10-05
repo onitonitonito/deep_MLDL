@@ -11,7 +11,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 # '루트'와 '작업'디렉토리 설정 - for 스크립트런
 DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-CSV_DIR = os.path.join(ROOT, "_static","MNIST_data", "")
+CSV_DIR = os.path.join(ROOT, "_statics","MNIST_data", "")
 
 tf.set_random_seed(777)         # 동일한 재현성을 위하여, 시드 동일하게 초기화
 

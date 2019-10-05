@@ -19,7 +19,7 @@ DIRS = os.path.dirname(__file__).partition('deep_MLDL\\')
 ROOT = DIRS[0] + DIRS[1]
 
 filename = 'haarcascade_frontalface.xml'
-filename_with_dir = os.path.join(ROOT, '_static', filename)
+filename_with_dir = os.path.join(ROOT, '_statics', filename)
 # print(filename_with_dir); quit()
 
 xmldata = urllib.request.urlopen(

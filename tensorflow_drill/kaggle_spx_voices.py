@@ -12,13 +12,13 @@ import sys
 # '루트'와 '작업'디렉토리 설정 - for 스크립트런
 DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-CSV_DIR = os.path.join(ROOT, "_static", "_csv_hunkim", "")
+CSV_DIR = os.path.join(ROOT, "_statics", "_csv_hunkim", "")
 FNAME_WITH_DIR = CSV_DIR + 'voice_with_header.csv'
 
 # 스크립트런 '한글' 표시를 위한 커스텀 모듈 실행
 sys.path.append(ROOT)
-import _script_run_utf8
-_script_run_utf8.main()
+import script_run
+
 
 """#  2.Split data into 'TRAIN SET' / 'TEST SET'
 > ## data를 읽은 후

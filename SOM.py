@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from matplotlib import pyplot as plt
+
+import matplotlib.pyplot as plt
 
 
 
@@ -222,8 +223,8 @@ if __name__ == '__main__':
           [.33, .33, .33],
           [.5, .5, .5],
           [.66, .66, .66]])
-    color_names = \
-        ['black', 'blue', 'darkblue', 'skyblue',
+
+    color_names = ['black', 'blue', 'darkblue', 'skyblue',
          'greyblue', 'lilac', 'green', 'red',
          'cyan', 'violet', 'yellow', 'white',
          'darkgrey', 'mediumgrey', 'lightgrey']

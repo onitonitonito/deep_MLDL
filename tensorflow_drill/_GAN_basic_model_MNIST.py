@@ -10,7 +10,7 @@ ROOT = DIRS[0] + DIRS[1]
 sys.path.append(ROOT)
 
 from os.path import dirname, join
-WORK_DIR = join(ROOT,'_static','MNIST_data','')
+WORK_DIR = join(ROOT,'_statics','MNIST_data','')
 
 
 from tensorflow.examples.tutorials.mnist import input_data

@@ -1,9 +1,7 @@
 """
 # 워드클라우드 깃허브에 예제로 잘 올라와 있다
 # https://amueller.github.io/word_cloud/auto_examples/masked.html
-#
-#
-#"""
+"""
 print(__doc__)
 
 
@@ -18,7 +16,7 @@ from wordcloud import WordCloud
 from wordcloud import WordCloud, STOPWORDS
 
 
-FILENAME_WITH_DIR = './_static/_made_static/i_have_a_dream.pdb'
+FILENAME_WITH_DIR = './_statics/_made_statics/i_have_a_dream.pdb'
 
 f = open(FILENAME_WITH_DIR).read()
 wc = WordCloud(max_font_size=35).generate(f)
@@ -41,7 +39,7 @@ https://amueller.github.io/word_cloud/auto_examples/masked.html
 # # Read the whole f.
 # f = open(path.join(d, 'alice.txt')).read()
 
-DESTIN_DIR = './_static/_made_static/'
+DESTIN_DIR = './_statics/_made_statics/'
 
 f = open(FILENAME_WITH_DIR).read()
 

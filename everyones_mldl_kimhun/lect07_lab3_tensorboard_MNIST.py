@@ -15,7 +15,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 # '루트'와 '작업'디렉토리 설정 - for 스크립트런
 DIRS = os.path.dirname(__file__).partition("deep_MLDL")
 ROOT = DIRS[0] + DIRS[1]
-WORK_DIR = os.path.join(ROOT, "_static", "")
+WORK_DIR = os.path.join(ROOT, "_statics", "")
 
 mnist = input_data.read_data_sets(WORK_DIR + "MNIST_data/", one_hot=True)
 
@@ -102,5 +102,5 @@ with tf.Session() as sess:
 
     print("Run the command line:\n"
           " : Starting form the ROOT dir. Run tensorboard @ ROOT\n"
-          "--> tensorboard --logdir='./_static/_logdir/'\n"
+          "--> tensorboard --logdir='./_statics/_logdir/'\n"
           "Then open http://your-site:6006/ into your web browser")

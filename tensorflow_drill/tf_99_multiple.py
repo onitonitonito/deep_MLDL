@@ -20,7 +20,7 @@ import _files_dirs_run as fd
 
 
 import tensorflow as tf
-LOG_DIR = os.path.join(fd.get_dir(), '_static', '_logdir')
+LOG_DIR = os.path.join(fd.get_dir(), '_statics', '_logdir')
 
 
 def one2three_1():

@@ -9,8 +9,8 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 dirs = os.path.dirname(__file__).partition('deep_MLDL')
 ROOT = dirs[0] + dirs[1]
-DATA_DIR = os.path.join(ROOT, "_static", "MNIST_data", "")
-SAVE_DIR = os.path.join(ROOT, "_static", "image", "mnist_gan_image", "")
+DATA_DIR = os.path.join(ROOT, "_statics", "MNIST_data", "")
+SAVE_DIR = os.path.join(ROOT, "_statics", "image", "mnist_gan_image", "")
 
 mnist = input_data.read_data_sets(DATA_DIR, one_hot=True)
 

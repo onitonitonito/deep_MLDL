@@ -10,7 +10,7 @@ print(__doc__)
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-mnist = input_data.read_data_sets("../_static/mnist_data/", one_hot=True)
+mnist = input_data.read_data_sets("../_statics/mnist_data/", one_hot=True)
 
 #########
 # 옵션 설정

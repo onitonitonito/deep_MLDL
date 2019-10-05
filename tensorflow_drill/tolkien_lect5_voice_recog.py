@@ -17,7 +17,7 @@ sys.path.append(dirs[0]+dirs[1])
 import _files_dirs_run as fd
 # fd.main() --- ROOT_DIR 의 화일리스트가 '장식자'로 표시된다.
 
-CSV_DIR = os.path.join(fd.get_dir(), '_static', '_csv_hunkim', '')
+CSV_DIR = os.path.join(fd.get_dir(), '_statics', '_csv_hunkim', '')
 
 import numpy as np
 import urllib.request
