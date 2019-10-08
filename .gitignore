@@ -1,6 +1,7 @@
 #_____________________________________________________
 #  1. cache, build, db sqlite3 files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.ipynb_checkpoints/
 __pycache__/
 mnist_data/
 _logdir/
@@ -21,10 +22,10 @@ _.pdb
 cache_avhash/
 category_101objects/
 gyudon/
-
+*.jpg
 
 #_____________________________________________________
 #  3. ipython notebook temporary check point
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.ipynb_checkpoints/
-*.jpg
+# -- drowsiness detection
+*.h5
