@@ -1,14 +1,65 @@
-import tensorflow as tf
-import numpy as np
+"""
+# TODO: tensorflow 1.x version should be modified to tf2.0
+"""
+# https://stackoverflow.com/questions/37383812/tensorflow-module-object-has-no-attribute-placeholder
 
+import numpy as np
 import matplotlib.pyplot as plt
 
+# if made by tensorflow 1.x version, it can be a temporary solution.
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
+print(__doc__)
+
+def main():
+    #For plotting the images
+    #Training inputs for RGBcolors
+    colors = np.array(
+         [[0., 0., 0.],
+          [0., 0., 1.],
+          [0., 0., 0.5],
+          [0.125, 0.529, 1.0],
+          [0.33, 0.4, 0.67],
+          [0.6, 0.5, 1.0],
+          [0., 1., 0.],
+          [1., 0., 0.],
+          [0., 1., 1.],
+          [1., 0., 1.],
+          [1., 1., 0.],
+          [1., 1., 1.],
+          [.33, .33, .33],
+          [.5, .5, .5],
+          [.66, .66, .66]])
+
+    color_names = ['black', 'blue', 'darkblue', 'skyblue',
+         'greyblue', 'lilac', 'green', 'red',
+         'cyan', 'violet', 'yellow', 'white',
+         'darkgrey', 'mediumgrey', 'lightgrey']
+
+    #Train a 20x30 SOM with 400 iterations
+    som = SOM(20, 30, 3, 400)
+    som.train(colors)
+
+    #Get output grid
+    image_grid = som.get_centroids()
+
+    #Map colours to their closest neurons
+    mapped = som.map_vects(colors)
+
+    #Plot
+    plt.imshow(image_grid)
+    plt.title('Color SOM')
+    for i, m in enumerate(mapped):
+        plt.text(m[1], m[0], color_names[i], ha='center', va='center',
+                 bbox=dict(facecolor='white', alpha=0.5, lw=0))
+    plt.show()
 
 class SOM(object):
     """
-    2-D Self-Organizing Map with Gaussian Neighbourhood function
-    and linearly decreasing learning rate.
+    # 2-D Self-Organizing Map with Gaussian Neighbourhood function
+    # and linearly decreasing learning rate.
     """
 
     #To check if the SOM has been trained
@@ -16,18 +67,18 @@ class SOM(object):
 
     def __init__(self, m, n, dim, n_iterations=100, alpha=None, sigma=None):
         """
-        Initializes all necessary components of the TensorFlow
-        Graph.
-
-        m X n are the dimensions of the SOM. 'n_iterations' should
-        should be an integer denoting the number of iterations undergone
-        while training.
-        'dim' is the dimensionality of the training inputs.
-        'alpha' is a number denoting the initial time(iteration no)-based
-        learning rate. Default value is 0.3
-        'sigma' is the the initial neighbourhood value, denoting
-        the radius of influence of the BMU while training. By default, its
-        taken to be half of max(m, n).
+        # Initializes all necessary components of the TensorFlow
+        # Graph.
+        #
+        # m X n are the dimensions of the SOM. 'n_iterations' should
+        # should be an integer denoting the number of iterations undergone
+        # while training.
+        # 'dim' is the dimensionality of the training inputs.
+        # 'alpha' is a number denoting the initial time(iteration no)-based
+        # learning rate. Default value is 0.3
+        # 'sigma' is the the initial neighbourhood value, denoting
+        # the radius of influence of the BMU while training. By default, its
+        # taken to be half of max(m, n).
         """
 
         #Assign required variables first
@@ -204,45 +255,4 @@ class SOM(object):
 
 
 if __name__ == '__main__':
-    #For plotting the images
-
-    #Training inputs for RGBcolors
-    colors = np.array(
-         [[0., 0., 0.],
-          [0., 0., 1.],
-          [0., 0., 0.5],
-          [0.125, 0.529, 1.0],
-          [0.33, 0.4, 0.67],
-          [0.6, 0.5, 1.0],
-          [0., 1., 0.],
-          [1., 0., 0.],
-          [0., 1., 1.],
-          [1., 0., 1.],
-          [1., 1., 0.],
-          [1., 1., 1.],
-          [.33, .33, .33],
-          [.5, .5, .5],
-          [.66, .66, .66]])
-
-    color_names = ['black', 'blue', 'darkblue', 'skyblue',
-         'greyblue', 'lilac', 'green', 'red',
-         'cyan', 'violet', 'yellow', 'white',
-         'darkgrey', 'mediumgrey', 'lightgrey']
-
-    #Train a 20x30 SOM with 400 iterations
-    som = SOM(20, 30, 3, 400)
-    som.train(colors)
-
-    #Get output grid
-    image_grid = som.get_centroids()
-
-    #Map colours to their closest neurons
-    mapped = som.map_vects(colors)
-
-    #Plot
-    plt.imshow(image_grid)
-    plt.title('Color SOM')
-    for i, m in enumerate(mapped):
-        plt.text(m[1], m[0], color_names[i], ha='center', va='center',
-                 bbox=dict(facecolor='white', alpha=0.5, lw=0))
-    plt.show()
+    main()
