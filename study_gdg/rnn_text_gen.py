@@ -1,20 +1,24 @@
 """
 # RNN Text Generation Model --Solaris ML-Lab
 # http://solarisailab.com/archives/2487
-#
+"""
 # 머신러닝 RNN을 이용한 텍스트 제네레이터
 #------------------------------
 # Author : solaris33
 # Project URL : http://solarisailab.com/archives/2487
 # GitHub Repository : https://github.com/solaris33/char-rnn-tensorflow/
 # Reference : https://github.com/sherjilozair/char-rnn-tensorflow
-#\n\n\n"""
-print(__doc__)
 
-import tensorflow as tf
+
 import numpy as np
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 
 from utils import TextLoader
+
+print(__doc__)
 
 # 학습에 필요한 설정값들을 지정합니다.
 data_dir = '_rnn_data'

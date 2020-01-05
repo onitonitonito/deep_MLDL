@@ -3,24 +3,21 @@ from __future__ import print_function
 # GitHub RNN example -- using MNIST, prediction
 # https://github.com/aymericdamien/TensorFlow-Examples/blob/master/
 # examples/3_NeuralNetworks/recurrent_network.py
+"""
+# Recurrent Neural Network. = Long short-term memory (LSTM)
+# -----------------------
+# A Recurrent Neural Network (LSTM) implementation example using TensorFlow
+# library. This example is using the MNIST database of handwritten digits
+# (http://yann.lecun.com/exdb/mnist/)
 #
+# Links:
+#     [Long Short Term Memory](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf)
+#     [MNIST Dataset](http://yann.lecun.com/exdb/mnist/).
 #
-Recurrent Neural Network. = Long short-term memory (LSTM)
------------------------
-A Recurrent Neural Network (LSTM) implementation example using TensorFlow
-library. This example is using the MNIST database of handwritten digits
-(http://yann.lecun.com/exdb/mnist/)
+# Author: Aymeric Damien
+# Project: https://github.com/aymericdamien/TensorFlow-Examples/
 
-Links:
-    [Long Short Term Memory](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf)
-    [MNIST Dataset](http://yann.lecun.com/exdb/mnist/).
-
-Author: Aymeric Damien
-Project: https://github.com/aymericdamien/TensorFlow-Examples/
-#
-#\n\n\n"""
 print(__doc__)
-
 
 import tensorflow as tf
 from tensorflow.contrib import rnn

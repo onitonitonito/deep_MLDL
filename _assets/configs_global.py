@@ -1,7 +1,6 @@
 """
 # _assets/configs_global.py - 각종변수 및 Path를 지정
 """
-import script_run
 import os
 import sys
 print(__doc__)

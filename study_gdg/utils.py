@@ -1,17 +1,14 @@
 """
-# This is import-module for rnn_text_gen.py
-#
-#
-#"""
+# utils.py - This is import-module for rnn_text_gen.py
+"""
 print(__doc__)
 
 
-
-import codecs
 import os
+import codecs
+import numpy as np
 import collections
 from six.moves import cPickle
-import numpy as np
 
 
 class TextLoader():

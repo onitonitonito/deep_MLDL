@@ -11,7 +11,6 @@ print(__doc__)
 # Author: Gael Varoquaux <gael dot varoquaux at normalesup dot org>
 # License: BSD 3 clause
 
-
 import matplotlib.pyplot as plt
 from sklearn import datasets, svm, metrics
 

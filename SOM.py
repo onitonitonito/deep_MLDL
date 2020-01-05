@@ -1,7 +1,10 @@
 """
 # TODO: tensorflow 1.x version should be modified to tf2.0
+# SOLUTION:  import tensorflow.compat.v1 as tf
+#            tf.disable_v2_behavior()
 """
-# https://stackoverflow.com/questions/37383812/tensorflow-module-object-has-no-attribute-placeholder
+# https://stackoverflow.com/questions/37383812/
+# tensorflow-module-object-has-no-attribute-placeholder
 
 import numpy as np
 import matplotlib.pyplot as plt
