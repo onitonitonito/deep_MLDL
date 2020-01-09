@@ -2,16 +2,6 @@
 # calculation of matrics size
 #
 """
-# f[2x2], s:[1] = [6.0 x 6.0]
-#
-# f[3x3], s:[1] = [5.0 x 5.0]
-# f[3x3], s:[2] = [3.0 x 3.0]
-#
-# f[4x4], s:[1] = [4.0 x 4.0]
-# f[4x4], s:[3] = [2.0 x 2.0]
-#
-# f[5x5], s:[1] = [3.0 x 3.0]
-# f[5x5], s:[2] = [2.0 x 2.0]
 # print(__doc__)
 
 def proper_filter(n, filter_max, stride_max):
@@ -32,5 +22,16 @@ def proper_filter(n, filter_max, stride_max):
 if __name__ == '__main__':
     proper_filter(n=7, filter_max=5, stride_max=3)
 
+
 """
+# f[2x2], s:[1] = [6.0 x 6.0]
+#
+# f[3x3], s:[1] = [5.0 x 5.0]
+# f[3x3], s:[2] = [3.0 x 3.0]
+#
+# f[4x4], s:[1] = [4.0 x 4.0]
+# f[4x4], s:[3] = [2.0 x 2.0]
+#
+# f[5x5], s:[1] = [3.0 x 3.0]
+# f[5x5], s:[2] = [2.0 x 2.0]
 """
